@@ -21,7 +21,7 @@ repos:
     rev: 5.13.2
     hooks:
     -   id: isort
-- repo: https://github.com/pre-commit/mirrors-mypy
+- repo: https://github.com/pre-commit/mirrors-mypy # For type hints
   rev: v1.13.0
   hooks:
     - id: mypy
