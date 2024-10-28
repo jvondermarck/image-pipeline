@@ -14,7 +14,7 @@ Python program to process a folder of images and, for each image, apply pre-proc
 
 ### Usage of pre-commit
 
-1. Install pre-commit via `pip install pre-commit`
+1. Install pre-commit via `pip install pre-commit` (if not already installed via the requirements.txt)
 2. Run the command `pre-commit install` in the project directory
 3. Now, every time you commit, the pre-commit hooks will be executed
 

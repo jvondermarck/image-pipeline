@@ -1,3 +1,4 @@
 ﻿pre-commit
 ruff
 isort
+mypy
