@@ -6,14 +6,19 @@ from PIL import Image
 
 class ImageProcessor:
     PADDING_COLOR = (114, 114, 114)
+    OUTPUT_FOLDER = "dataset"
+    DATETIME_FORMAT = "%Y%m%d%H%M%S"
 
     def __init__(self, relative_path_image_folder: str):
         self.relative_path_image_folder = relative_path_image_folder
         if not os.path.exists(self.relative_path_image_folder):
             raise Exception("Folder does not exist...")
 
-        timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
-        self.output_folder = os.path.join("dataset", timestamp)
+        self.__generate_output_folder()
+
+    def __generate_output_folder(self):
+        timestamp = datetime.now().strftime(self.DATETIME_FORMAT)
+        self.output_folder = os.path.join(self.OUTPUT_FOLDER, timestamp)
         os.makedirs(self.output_folder, exist_ok=True)
 
     @staticmethod
@@ -46,12 +51,15 @@ class ImageProcessor:
         :param new_size:
         :return:
         """
-        with Image.open(file_path) as img:
-            new_width, new_height = self.__get_dimensions(img, new_size)
-            img = img.resize((new_width, new_height))
-            img = self.__add_padding(img, new_size)
-            output_path = os.path.join(self.output_folder, filename)
-            img.save(output_path)
+        try:
+            with Image.open(file_path) as img:
+                new_width, new_height = self.__get_dimensions(img, new_size)
+                img = img.resize((new_width, new_height))
+                img = self.__add_padding(img, new_size)
+                output_path = os.path.join(self.output_folder, filename)
+                img.save(output_path)
+        except Exception as e:
+            print(f"An unexpected error occurred while processing '{filename}': {e}")
 
     def process_folder(self, new_size: int) -> None:
         """
