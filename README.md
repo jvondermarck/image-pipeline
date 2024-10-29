@@ -19,3 +19,14 @@ Python program to process a folder of images and, for each image, apply pre-proc
 3. Now, every time you commit, the pre-commit hooks will be executed
 
 > You can manually run the pre-commit hooks via `pre-commit run --all-files`
+
+
+### Prerequisites
+
+- Python 3.11
+- PyCharm
+- Some pictures in a folder like `input_folders/`
+
+## Run the project
+
+- Run the project via `python main.py` or directly via the config already set up on PyCharm
