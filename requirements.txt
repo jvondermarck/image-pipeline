@@ -1,5 +1,5 @@
-﻿pre-commit # for running pre-commit hooks
-ruff # formatter and linter
-isort # for sorting imports
-mypy # for static type checking
-Pillow # for image processing
+﻿pre-commit
+ruff
+isort
+mypy
+Pillow
