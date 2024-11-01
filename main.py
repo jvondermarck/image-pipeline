@@ -1,7 +1,7 @@
 from src.ImageProcessor import ImageProcessor
 
 
-def main():
+def main() -> None:
     try:
         folder_path = input("Enter the path to the folder containing the images: ")
         processor = ImageProcessor(folder_path)
