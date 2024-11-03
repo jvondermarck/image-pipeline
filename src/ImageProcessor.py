@@ -1,5 +1,6 @@
 import os
 from datetime import datetime
+from typing import Final
 
 from PIL import Image
 
@@ -7,9 +8,9 @@ from src.image_utils import add_padding_to_image, get_resized_dimensions
 
 
 class ImageProcessor:
-    PADDING_COLOR = (114, 114, 114)
-    OUTPUT_FOLDER = "dataset"
-    DATETIME_FORMAT = "%Y%m%d%H%M%S"
+    PADDING_COLOR: Final[tuple[int, int, int]] = (114, 114, 114)
+    OUTPUT_FOLDER: Final[str] = "dataset"
+    DATETIME_FORMAT: Final[str] = "%Y%m%d%H%M%S"
 
     def __init__(self, relative_path_image_folder: str) -> None:
         """
@@ -30,7 +31,7 @@ class ImageProcessor:
     def output_dataset_folder_name(self) -> str:
         return datetime.now().strftime(self.DATETIME_FORMAT)
 
-    def _generate_output_folder(self, folder_name) -> str:
+    def _generate_output_folder(self, folder_name: str) -> str:
         folder_path = os.path.join(self.OUTPUT_FOLDER, folder_name)
         os.makedirs(folder_path, exist_ok=True)
         return folder_path
